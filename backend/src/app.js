@@ -10,7 +10,7 @@ const app = express();
 // use some application-level middlewares
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL ?? "http://localhost:3000",
+    origin: process.env.VITE_PROD_URL ?? "http://localhost:3001",
     optionsSuccessStatus: 200,
   })
 );
@@ -23,6 +23,10 @@ app.use(express.static(path.join(__dirname, "../public")));
 const router = require("./router");
 
 app.use("/api", router);
+
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../public", "index.htlm"));
+});
 
 // ready to export
 module.exports = app;
