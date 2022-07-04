@@ -16,7 +16,7 @@ function AddForm({ items, setItems }) {
         })
         .catch((err) => console.error(err));
     } else {
-      alert("Enter a correct item");
+      alert("Enter a correct item !");
     }
   };
 
